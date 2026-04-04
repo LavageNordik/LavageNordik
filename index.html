@@ -7,20 +7,17 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,200;0,300;0,400;0,500;0,600;1,300&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
-/* ══════════════════════════════════
-   ROOT & RESET
-══════════════════════════════════ */
 :root {
-  --ink:      #020b1e;
-  --navy:     #030f2e;
-  --blue1:    #1048c8;
-  --blue2:    #1e6aff;
-  --aqua:     #00c8ff;
-  --ice:      #9fd4f8;
-  --white:    #f0f7ff;
-  --muted:    rgba(168,216,255,.5);
-  --navbg:    #edf2f8;
-  --navtext:  #1a2b4a;
+  --ink:     #020b1e;
+  --navy:    #030f2e;
+  --blue1:   #1048c8;
+  --blue2:   #1e6aff;
+  --aqua:    #00c8ff;
+  --ice:     #9fd4f8;
+  --white:   #f0f7ff;
+  --muted:   rgba(168,216,255,.5);
+  --navbg:   #edf2f8;
+  --navtext: #1a2b4a;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
@@ -32,9 +29,7 @@ body{
   overflow-x:hidden;
 }
 
-/* ══════════════════════════════════
-   NAV - light blue-grey, bigger
-══════════════════════════════════ */
+/* ══ NAV ══ */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:200;
   height:82px;padding:0 3rem;
@@ -42,12 +37,10 @@ nav{
   background:var(--navbg);
   box-shadow:0 1px 0 rgba(26,43,74,.1),0 3px 20px rgba(0,0,0,.07);
 }
-/* ── LOGO BADGE ── */
 .nav-logo{text-decoration:none;display:flex;align-items:center;}
 .nav-badge{
   display:flex;align-items:center;gap:1.1rem;
-  background:#030f2e;
-  border-radius:10px;
+  background:#030f2e;border-radius:10px;
   padding:.75rem 1.5rem .75rem 1.15rem;
   box-shadow:0 3px 16px rgba(0,0,0,.3);
 }
@@ -58,25 +51,19 @@ nav{
   font-size:.65rem;letter-spacing:.5em;text-transform:uppercase;
   color:rgba(159,212,248,.7);
 }
-/* Nordik in nav uses the same hero gradient */
 .nav-nordik-sm{
-  font-family:'Fredoka',sans-serif;font-weight:700;
-  font-size:1.38rem;letter-spacing:0;
+  font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.38rem;
   background:linear-gradient(140deg,#fff 0%,#c2e2ff 32%,#5a96ff 65%,#1048c8 100%);
   -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
 }
-/* Nav links — punchy sliding underline */
 .nav-links{display:flex;align-items:center;gap:2.4rem;list-style:none;}
 .nav-links a{
   color:var(--navtext);text-decoration:none;
   font-size:.88rem;font-weight:400;letter-spacing:.02em;
-  position:relative;padding-bottom:4px;
-  transition:color .22s;
+  position:relative;padding-bottom:4px;transition:color .22s;
 }
-/* Animated underline bar */
 .nav-links a::after{
-  content:'';
-  position:absolute;bottom:0;left:0;
+  content:'';position:absolute;bottom:0;left:0;
   width:0;height:2px;
   background:linear-gradient(90deg,var(--blue1),var(--blue2));
   border-radius:2px;
@@ -84,18 +71,18 @@ nav{
 }
 .nav-links a:hover{color:var(--blue1);}
 .nav-links a:hover::after{width:100%;}
-/* CTA button — no underline */
 .nav-links .nav-cta::after{display:none;}
 .nav-cta{
   background:var(--blue1)!important;color:#fff!important;
   padding:.58rem 1.5rem;border-radius:7px;font-weight:500!important;
   letter-spacing:.02em;transition:background .2s!important;
+  text-decoration:none;font-family:'Jost',sans-serif;font-size:.88rem;
 }
 .nav-cta:hover{background:var(--blue2)!important;}
+/* Mobile CTA — hidden by default, shown on mobile */
+.nav-mobile-cta{display:none;}
 
-/* ══════════════════════════════════
-   HERO
-══════════════════════════════════ */
+/* ══ HERO ══ */
 #hero{
   position:relative;min-height:100vh;
   display:flex;align-items:center;
@@ -103,17 +90,11 @@ nav{
   overflow:hidden;
 }
 #paint{position:absolute;inset:0;width:100%;height:100%;z-index:0;}
-/* Decorative circles — static, subtle (Éducanin style) */
-.bg-c{
-  position:absolute;border-radius:50%;
-  background:rgba(255,255,255,.028);
-  pointer-events:none;z-index:1;
-}
+.bg-c{position:absolute;border-radius:50%;background:rgba(255,255,255,.028);pointer-events:none;z-index:1;}
 .bc1{width:580px;height:580px;top:-160px;right:-100px;}
 .bc2{width:380px;height:380px;top:100px;right:220px;}
 .bc3{width:260px;height:260px;bottom:40px;right:60px;}
 .bc4{width:160px;height:160px;bottom:200px;right:350px;}
-
 .hero-content{position:relative;z-index:2;max-width:620px;}
 
 .hero-badge{
@@ -121,54 +102,41 @@ nav{
   background:rgba(0,200,255,.07);border:1px solid rgba(0,200,255,.18);
   border-radius:50px;padding:.36rem 1.1rem;font-size:.71rem;color:var(--aqua);
   letter-spacing:.14em;text-transform:uppercase;font-weight:400;
-  margin-bottom:1.6rem;width:fit-content;white-space:nowrap;overflow:visible;
+  margin-bottom:1.6rem;width:fit-content;white-space:nowrap;
   animation:fu .6s ease both;
 }
-.hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--aqua);animation:pl 2s ease infinite;}
+.hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--aqua);animation:pl 2s ease infinite;flex-shrink:0;}
 
-/* LAVAGE thin label */
 .hl-lavage{
   font-family:'Jost',sans-serif;font-weight:200;
-  font-size:clamp(1.2rem,2vw,1.75rem);
-  letter-spacing:.65em;text-transform:uppercase;
+  font-size:clamp(1rem,2vw,1.75rem);
+  letter-spacing:.55em;text-transform:uppercase;
   color:rgba(159,212,248,.55);line-height:1;
-  animation:fu .6s .07s ease both;
-  margin-bottom:.1rem;
+  animation:fu .6s .07s ease both;margin-bottom:.1rem;
 }
-
-/* NORDIK with O=drop */
 .hl-nordik-wrap{
   display:flex;align-items:baseline;
   animation:fu .6s .1s ease both;
-  line-height:1;
-  margin-bottom:0;
-  /* Set font-size on wrapper so em units inside reference the right size */
-  font-size:clamp(2.8rem,7.5vw,7rem);
+  line-height:1;margin-bottom:0;
+  font-size:clamp(2.6rem,7.5vw,7rem);
 }
 .hl-n-letter{
-  font-family:'Fredoka',sans-serif;font-weight:700;
-  font-size:1em;
+  font-family:'Fredoka',sans-serif;font-weight:700;font-size:1em;
   letter-spacing:-.02em;
   background:linear-gradient(140deg,#fff 0%,#c2e2ff 32%,#5a96ff 65%,#1048c8 100%);
   -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
   line-height:1;
 }
-/* The O drop SVG — sized to match Fredoka cap height */
 .hl-o-drop{
-  display:inline-block;
-  height:.76em;
-  width:auto;
-  vertical-align:-.10em;
-  margin:0 .02em;
+  display:inline-block;height:.76em;width:auto;
+  vertical-align:-.10em;margin:0 .02em;
 }
-
 .hero-sub{
-  font-size:1.02rem;color:rgba(168,216,255,.52);max-width:460px;
-  font-weight:300;line-height:1.88;margin-top:1.6rem;margin-bottom:2.2rem;
+  font-size:1rem;color:rgba(168,216,255,.52);max-width:460px;
+  font-weight:300;line-height:1.88;margin-top:1.5rem;margin-bottom:2rem;
   animation:fu .6s .18s ease both;
 }
 .hero-sub strong{color:rgba(168,216,255,.75);font-weight:500;}
-
 .hero-actions{display:flex;gap:.85rem;flex-wrap:wrap;animation:fu .6s .25s ease both;}
 .btn-primary{
   display:inline-flex;align-items:center;gap:.5rem;
@@ -189,201 +157,83 @@ nav{
 }
 .btn-ghost:hover{border-color:rgba(159,212,248,.38);background:rgba(255,255,255,.09);}
 .hero-stats{
-  display:flex;gap:2.8rem;margin-top:3.5rem;
+  display:flex;gap:2.5rem;margin-top:3rem;
   padding-top:2.5rem;border-top:1px solid rgba(255,255,255,.08);
   animation:fu .6s .33s ease both;
 }
 .stat-num{font-family:'Fredoka',sans-serif;font-size:1.85rem;font-weight:600;color:var(--aqua);line-height:1;}
-.stat-label{font-size:.72rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-top:.24rem;font-family:'Jost',sans-serif;}
+.stat-label{font-size:.7rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-top:.24rem;font-family:'Jost',sans-serif;}
 
 @keyframes fu{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
 @keyframes pl{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.6)}}
 
-/* ══════════════════════════════════
-   SHARED SECTION STYLES
-══════════════════════════════════ */
+/* ══ SHARED ══ */
 .container{max-width:1160px;margin:0 auto;padding:0 2.8rem;}
-.section-label{
-  display:inline-block;font-family:'Jost',sans-serif;
-  font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;
-  color:var(--aqua);font-weight:400;margin-bottom:.6rem;
-}
-.section-title{
-  font-family:'Fredoka',sans-serif;font-weight:600;
-  font-size:clamp(1.8rem,3.5vw,2.75rem);line-height:1.1;margin-bottom:.9rem;
-}
-.section-desc{
-  color:var(--muted);max-width:520px;font-weight:300;
-  line-height:1.88;margin-bottom:3.5rem;font-size:.97rem;
-}
+.section-label{display:inline-block;font-family:'Jost',sans-serif;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--aqua);font-weight:400;margin-bottom:.6rem;}
+.section-title{font-family:'Fredoka',sans-serif;font-weight:600;font-size:clamp(1.7rem,3.5vw,2.75rem);line-height:1.1;margin-bottom:.9rem;}
+.section-desc{color:var(--muted);max-width:520px;font-weight:300;line-height:1.88;margin-bottom:3rem;font-size:.97rem;}
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease;}
 .reveal.visible{opacity:1;transform:translateY(0);}
 
-/* ══════════════════════════════════
-   SERVICES - light bg, colored cards
-══════════════════════════════════ */
-#services{
-  padding:7rem 2.8rem;
-  /* Lighter background for clear section contrast */
-  background:linear-gradient(180deg,#0c1e4a 0%,#0e224e 100%);
-}
-.services-intro{
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:2rem;align-items:end;margin-bottom:3.5rem;
-}
+/* ══ SERVICES ══ */
+#services{padding:6rem 2.8rem;background:linear-gradient(180deg,#0c1e4a 0%,#0e224e 100%);}
+.services-intro{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:end;margin-bottom:3rem;}
 .services-intro .section-desc{margin-bottom:0;}
-
-.services-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:1.6rem;
-}
-
-/* Each card has its own base + hover color */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;}
 .service-card{
-  border-radius:16px;padding:2.4rem 2rem;
+  border-radius:16px;padding:2.2rem 1.8rem;
   position:relative;overflow:hidden;
   transition:transform .35s,box-shadow .35s,background .35s;
-  cursor:default;
-  border:1px solid rgba(255,255,255,.08);
+  cursor:default;border:1px solid rgba(255,255,255,.08);
 }
-.service-card:hover{
-  transform:translateY(-7px);
-  box-shadow:0 24px 60px rgba(0,0,0,.4),0 0 0 1px rgba(255,255,255,.12);
-}
-
-/* Card 1 – Résidentiel: deep navy → electric blue */
-.sc-res{background:#0d1d42;}
-.sc-res:hover{background:#1252d8;}
-.sc-res .sc-accent{color:#5a9eff;}
-.sc-res:hover .sc-accent{color:#a8d4ff;}
-.sc-res .sc-num{color:#1e69ff;}
-.sc-res:hover .sc-num{color:#c8e4ff;}
-
-/* Card 2 – Commercial: deep ocean → rich cobalt */
-.sc-com{background:#081828;}
-.sc-com:hover{background:#0a3080;}
-.sc-com .sc-accent{color:#00a8dd;}
-.sc-com:hover .sc-accent{color:#7ed4f8;}
-.sc-com .sc-num{color:#0090c8;}
-.sc-com:hover .sc-num{color:#b8e8ff;}
-
-/* Card 3 – Forfaits: deepest + indigo-blue */
-.sc-for{background:#060f28;}
-.sc-for:hover{background:#152870;}
-.sc-for .sc-accent{color:#4d72cc;}
-.sc-for:hover .sc-accent{color:#a8c4ff;}
-.sc-for .sc-num{color:#3a5ccc;}
-.sc-for:hover .sc-num{color:#c2d4ff;}
-
-/* Inner card top accent bar */
-.service-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:3px;
-  transition:opacity .35s;
-}
+.service-card:hover{transform:translateY(-7px);box-shadow:0 24px 60px rgba(0,0,0,.4),0 0 0 1px rgba(255,255,255,.12);}
+.sc-res{background:#0d1d42;} .sc-res:hover{background:#1252d8;}
+.sc-res .sc-accent{color:#5a9eff;} .sc-res:hover .sc-accent{color:#a8d4ff;}
+.sc-com{background:#081828;} .sc-com:hover{background:#0a3080;}
+.sc-com .sc-accent{color:#00a8dd;} .sc-com:hover .sc-accent{color:#7ed4f8;}
+.sc-for{background:#060f28;} .sc-for:hover{background:#152870;}
+.sc-for .sc-accent{color:#4d72cc;} .sc-for:hover .sc-accent{color:#a8c4ff;}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;transition:opacity .35s;}
 .sc-res::before{background:linear-gradient(90deg,#1252d8,#00c8ff);}
 .sc-com::before{background:linear-gradient(90deg,#00a8dd,#00e8ff);}
 .sc-for::before{background:linear-gradient(90deg,#3a5ccc,#5a9eff);}
-
-/* Card number */
-.sc-num{
-  font-family:'Fredoka',sans-serif;font-size:3.5rem;font-weight:700;
-  line-height:1;margin-bottom:1rem;
-  transition:color .35s;
-  opacity:.18;
-}
-
-.sc-icon{width:46px;height:46px;margin-bottom:1.2rem;}
-.service-title{
-  font-family:'Fredoka',sans-serif;font-size:1.38rem;font-weight:600;
-  margin-bottom:.7rem;color:#fff;
-}
-.service-desc{
-  font-size:.88rem;line-height:1.78;font-weight:300;
-  margin-bottom:1.4rem;color:rgba(255,255,255,.62);
-  transition:color .35s;
-}
+.sc-icon{width:46px;height:46px;margin-bottom:1.1rem;}
+.sc-accent{display:inline-block;font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.9rem;transition:color .35s;font-family:'Jost',sans-serif;}
+.service-title{font-family:'Fredoka',sans-serif;font-size:1.35rem;font-weight:600;margin-bottom:.65rem;color:#fff;}
+.service-desc{font-size:.88rem;line-height:1.78;font-weight:300;margin-bottom:1.3rem;color:rgba(255,255,255,.62);transition:color .35s;}
 .service-card:hover .service-desc{color:rgba(255,255,255,.78);}
-.service-list{list-style:none;display:flex;flex-direction:column;gap:.45rem;}
-.service-list li{
-  display:flex;align-items:flex-start;gap:.55rem;
-  font-size:.85rem;color:rgba(255,255,255,.6);
-  transition:color .35s;
-  font-weight:300;
-}
+.service-list{list-style:none;display:flex;flex-direction:column;gap:.42rem;}
+.service-list li{display:flex;align-items:flex-start;gap:.52rem;font-size:.85rem;color:rgba(255,255,255,.6);transition:color .35s;font-weight:300;}
 .service-card:hover .service-list li{color:rgba(255,255,255,.82);}
-.service-list li::before{
-  content:'';width:5px;height:5px;border-radius:50%;
-  background:currentColor;flex-shrink:0;margin-top:.5em;
-  opacity:.7;
-}
-.sc-accent{
-  display:inline-block;font-size:.72rem;font-weight:500;
-  letter-spacing:.1em;text-transform:uppercase;
-  margin-bottom:1rem;transition:color .35s;
-  font-family:'Jost',sans-serif;
-}
+.service-list li::before{content:'';width:5px;height:5px;border-radius:50%;background:currentColor;flex-shrink:0;margin-top:.5em;opacity:.7;}
 
-/* ══════════════════════════════════
-   FORFAITS / PACKAGES
-══════════════════════════════════ */
-#forfaits{
-  padding:7rem 2.8rem;
-  background:linear-gradient(180deg,#07122e 0%,#060e26 100%);
-}
-.forfaits-grid{
-  display:grid;grid-template-columns:repeat(4,1fr);
-  gap:1.2rem;margin-top:1rem;
-}
-@media(max-width:1100px){.forfaits-grid{grid-template-columns:repeat(2,1fr);}}
+/* ══ FORFAITS ══ */
+#forfaits{padding:6rem 2.8rem;background:linear-gradient(180deg,#07122e 0%,#060e26 100%);}
+.forfaits-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-top:1rem;}
 .forfait-card{
-  background:rgba(6,18,55,.65);
-  border:1px solid rgba(255,255,255,.08);
   border-radius:14px;padding:2rem 1.6rem;
-  backdrop-filter:blur(16px);
-  transition:transform .3s,border-color .3s,box-shadow .3s;
+  border:1px solid rgba(255,255,255,.08);
   position:relative;overflow:hidden;
+  transition:transform .3s,background .35s,border-color .3s,box-shadow .3s;
 }
-.forfait-card::after{
-  content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
-  background:var(--accent-color,var(--blue1));
-  opacity:.5;
-  transition:opacity .3s;
-}
-.forfait-card:hover{
-  transform:translateY(-4px);
-  border-color:rgba(255,255,255,.16);
-  box-shadow:0 16px 45px rgba(0,0,0,.35);
-}
+.forfait-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--accent-color,var(--blue1));opacity:.5;transition:opacity .3s;}
+.forfait-card:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.16);box-shadow:0 16px 45px rgba(0,0,0,.35);}
 .forfait-card:hover::after{opacity:1;}
-
-/* Forfait card distinct colors */
 .fc-1{background:#0d1d42;} .fc-1:hover{background:#1252d8;}
 .fc-2{background:#071e32;} .fc-2:hover{background:#084a80;}
 .fc-3{background:#0b1030;} .fc-3:hover{background:#1a2e8c;}
 .fc-4{background:#071520;} .fc-4:hover{background:#0a4060;}
-.forfait-card{transition:transform .3s,background .35s,border-color .3s,box-shadow .3s;}
+.forfait-icon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1.1rem;background:rgba(255,255,255,.06);}
+.forfait-title{font-family:'Fredoka',sans-serif;font-size:1.15rem;font-weight:600;margin-bottom:.5rem;}
+.forfait-desc{font-size:.85rem;color:rgba(168,216,255,.5);font-weight:300;line-height:1.75;}
+.forfait-tag{display:inline-block;margin-top:.85rem;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--aqua);font-weight:400;font-family:'Jost',sans-serif;}
 
-.forfait-icon{
-  width:42px;height:42px;border-radius:10px;
-  display:flex;align-items:center;justify-content:center;
-  margin-bottom:1.2rem;
-  background:rgba(255,255,255,.06);
-}
-.forfait-title{font-family:'Fredoka',sans-serif;font-size:1.18rem;font-weight:600;margin-bottom:.55rem;}
-.forfait-desc{font-size:.86rem;color:rgba(168,216,255,.5);font-weight:300;line-height:1.75;}
-.forfait-tag{
-  display:inline-block;margin-top:.9rem;
-  font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--aqua);font-weight:400;font-family:'Jost',sans-serif;
-}
+/* ══ SAISONS ══ */
+#saisons{padding:5rem 2.8rem;background:#060c22;}
+.saisons-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:stretch;}
 
-/* ══════════════════════════════════
-   APPROCHE / WHY
-══════════════════════════════════ */
-#why{
-  padding:7rem 2.8rem;
-  background:linear-gradient(180deg,#060e26,#060e24);
-}
+/* ══ APPROCHE ══ */
+#why{padding:6rem 2.8rem;background:linear-gradient(180deg,#060e26,#060e24);}
 .why-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:5rem;align-items:center;}
 .why-visual{position:relative;}
 .why-card-big{
@@ -393,73 +243,53 @@ nav{
 }
 .why-card-big h4{font-family:'Fredoka',sans-serif;font-size:1.1rem;font-weight:600;margin-bottom:.55rem;}
 .why-card-big p{font-size:.85rem;color:rgba(168,216,255,.5);font-weight:300;line-height:1.75;}
-.why-card-sm{
-  position:absolute;
-  background:linear-gradient(135deg,rgba(16,72,200,.22),rgba(0,200,255,.1));
-  border:1px solid rgba(255,255,255,.1);border-radius:12px;
-  padding:1.4rem;backdrop-filter:blur(16px);
-}
-.why-sm-1{bottom:0;right:0;width:55%;}
-.why-sm-2{bottom:90px;left:0;width:43%;}
-.why-sm-label{font-size:.7rem;color:var(--muted);font-weight:300;letter-spacing:.04em;margin-bottom:.3rem;font-family:'Jost',sans-serif;}
-.why-sm-val{font-family:'Fredoka',sans-serif;font-size:1.55rem;font-weight:600;color:var(--aqua);line-height:1.1;}
-
-.pillars{display:flex;flex-direction:column;gap:1.8rem;}
+.pillars{display:flex;flex-direction:column;gap:1.75rem;}
 .pillar{display:flex;gap:1.1rem;align-items:flex-start;}
-.pillar-icon{
-  width:42px;height:42px;flex-shrink:0;
-  background:rgba(16,72,200,.13);border:1px solid rgba(77,139,255,.18);
-  border-radius:9px;display:flex;align-items:center;justify-content:center;
-  transition:background .25s;
-}
+.pillar-icon{width:42px;height:42px;flex-shrink:0;background:rgba(16,72,200,.13);border:1px solid rgba(77,139,255,.18);border-radius:9px;display:flex;align-items:center;justify-content:center;transition:background .25s;}
 .pillar:hover .pillar-icon{background:rgba(16,72,200,.26);}
 .pillar-title{font-family:'Fredoka',sans-serif;font-weight:600;font-size:.98rem;margin-bottom:.18rem;}
 .pillar-desc{font-size:.86rem;color:var(--muted);font-weight:300;line-height:1.72;}
 
-/* ══════════════════════════════════
-   TERRITORY
-══════════════════════════════════ */
-#territory{
-  padding:7rem 2.8rem;
-  background:#060e24;text-align:center;
-}
-.territory-inner{
-  background:rgba(6,18,55,.55);border:1px solid rgba(255,255,255,.08);
-  border-radius:22px;padding:4.5rem 3rem;backdrop-filter:blur(18px);
-  max-width:880px;margin:0 auto;
-}
+/* ══ TERRITORY ══ */
+#territory{padding:6rem 2.8rem;background:#060e24;text-align:center;}
+.territory-inner{background:rgba(6,18,55,.55);border:1px solid rgba(255,255,255,.08);border-radius:22px;padding:4rem 3rem;backdrop-filter:blur(18px);max-width:880px;margin:0 auto;}
 .territory-list{display:flex;flex-wrap:wrap;gap:.58rem;justify-content:center;margin-top:2rem;}
-.territory-chip{
-  background:rgba(16,72,200,.1);border:1px solid rgba(77,139,255,.17);
-  border-radius:50px;padding:.38rem .95rem;
-  font-size:.82rem;color:var(--ice);font-weight:300;letter-spacing:.01em;
-  transition:background .2s,border-color .2s;
-}
+.territory-chip{background:rgba(16,72,200,.1);border:1px solid rgba(77,139,255,.17);border-radius:50px;padding:.38rem .95rem;font-size:.82rem;color:var(--ice);font-weight:300;transition:background .2s,border-color .2s;}
 .territory-chip:hover{background:rgba(16,72,200,.22);border-color:rgba(77,139,255,.38);}
 
-/* ══════════════════════════════════
-   CONTACT
-══════════════════════════════════ */
-#contact{padding:7rem 2.8rem;background:#060e22;}
+/* ══ GALERIE ══ */
+#galerie{padding:6rem 2.8rem 0;background:#060e22;}
+.carousel-track{
+  display:flex;gap:1.4rem;
+  overflow-x:auto;padding-bottom:1.5rem;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:thin;
+  scrollbar-color:rgba(77,139,255,.3) transparent;
+}
+.carousel-card{
+  flex:0 0 min(340px,80vw);height:260px;
+  background:rgba(6,18,55,.6);
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:18px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:1rem;scroll-snap-align:start;
+  position:relative;overflow:hidden;
+}
+
+/* ══ CONTACT ══ */
+#contact{padding:6rem 2.8rem;background:#060e22;}
 .contact-wrapper{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
 .contact-info{display:flex;flex-direction:column;gap:1.75rem;}
 .contact-item{display:flex;gap:1rem;align-items:flex-start;}
-.contact-icon{
-  width:40px;height:40px;flex-shrink:0;
-  background:rgba(16,72,200,.13);border:1px solid rgba(77,139,255,.17);
-  border-radius:9px;display:flex;align-items:center;justify-content:center;
-}
+.contact-icon{width:40px;height:40px;flex-shrink:0;background:rgba(16,72,200,.13);border:1px solid rgba(77,139,255,.17);border-radius:9px;display:flex;align-items:center;justify-content:center;}
 .cd{display:flex;flex-direction:column;gap:.12rem;}
 .cd-label{font-size:.68rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;font-family:'Jost',sans-serif;}
 .cd-val{font-size:.96rem;color:var(--white);text-decoration:none;font-weight:400;transition:color .2s;}
 .cd-val:hover{color:var(--aqua);}
-.contact-form{
-  background:rgba(6,18,55,.6);border:1px solid rgba(255,255,255,.09);
-  border-radius:18px;padding:2.4rem;backdrop-filter:blur(18px);
-  display:flex;flex-direction:column;gap:1.05rem;
-}
+.contact-form{background:rgba(6,18,55,.6);border:1px solid rgba(255,255,255,.09);border-radius:18px;padding:2.4rem;backdrop-filter:blur(18px);display:flex;flex-direction:column;gap:1rem;}
 .contact-form h3{font-family:'Fredoka',sans-serif;font-weight:600;font-size:1.22rem;margin-bottom:.2rem;}
-.contact-form > p{font-size:.8rem;color:var(--muted);font-weight:300;}
+.contact-form>p{font-size:.8rem;color:var(--muted);font-weight:300;}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;}
 .form-group{display:flex;flex-direction:column;gap:.4rem;}
 .form-label{font-size:.72rem;color:var(--muted);letter-spacing:.06em;font-family:'Jost',sans-serif;}
@@ -469,20 +299,13 @@ nav{
   color:var(--white);font-family:'Jost',sans-serif;font-size:.9rem;
   outline:none;transition:border-color .25s,box-shadow .25s;
 }
-.form-input:focus,.form-select:focus,.form-textarea:focus{
-  border-color:rgba(77,139,255,.52);box-shadow:0 0 0 3px rgba(16,72,200,.14);
-}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:rgba(77,139,255,.52);box-shadow:0 0 0 3px rgba(16,72,200,.14);}
 .form-select option{background:#061432;}
 .form-textarea{resize:none;min-height:95px;}
 .form-input::placeholder,.form-textarea::placeholder{color:rgba(168,216,255,.28);}
 
-/* ══════════════════════════════════
-   FOOTER
-══════════════════════════════════ */
-footer{
-  border-top:1px solid rgba(255,255,255,.07);
-  padding:2.6rem 2.8rem;background:#040b1e;
-}
+/* ══ FOOTER ══ */
+footer{border-top:1px solid rgba(255,255,255,.07);padding:2.6rem 2.8rem;background:#040b1e;}
 .footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
 .footer-copy{font-size:.77rem;color:var(--muted);font-weight:300;}
 .footer-links{display:flex;gap:2rem;}
@@ -490,33 +313,90 @@ footer{
 .footer-links a:hover{color:var(--aqua);}
 
 /* ══════════════════════════════════
-   RESPONSIVE
+   RESPONSIVE — TABLET ≤900px
 ══════════════════════════════════ */
 @media(max-width:900px){
-  .services-grid{grid-template-columns:1fr;}
-   .saisons-grid{grid-template-columns:1fr;}
-  .services-intro{grid-template-columns:1fr;}
-  .why-grid{grid-template-columns:1fr;}
-  .contact-wrapper{grid-template-columns:1fr;}
+  /* Nav */
+  nav{padding:0 1.2rem;height:70px;}
   .nav-links{display:none;}
+  .nav-mobile-cta{display:inline-flex!important;}
+  .nav-badge{padding:.6rem 1rem .6rem .85rem;gap:.8rem;}
+  .nav-drops{width:44px;height:36px;}
+  .nav-nordik-sm{font-size:1.15rem;}
+
+  /* Hero — replace heavy canvas with CSS gradient on mobile */
+  #paint{display:none;}
+  #hero{
+    padding:7.5rem 1.4rem 3.5rem;
+    background:
+      radial-gradient(ellipse 90% 50% at 15% 65%, rgba(21,88,232,.5) 0%,transparent 65%),
+      radial-gradient(ellipse 65% 40% at 80% 20%, rgba(30,106,255,.25) 0%,transparent 60%),
+      linear-gradient(160deg,#020b1e 0%,#0d1e4a 40%,#061432 70%,#020b1e 100%);
+  }
+  /* Circles too large on mobile */
+  .bc1,.bc2,.bc3,.bc4{display:none;}
+
+  .hero-content{max-width:100%;}
+  .hero-badge{font-size:.66rem;letter-spacing:.1em;padding:.32rem .9rem;}
+  .hero-sub{max-width:100%;font-size:.95rem;}
+  .hero-stats{gap:1.2rem;flex-wrap:wrap;margin-top:2rem;padding-top:2rem;}
+  .stat-num{font-size:1.6rem;}
+  .stat-label{font-size:.65rem;}
+
+  /* Layout grids */
+  .container{padding:0 1.4rem;}
+  .services-intro{grid-template-columns:1fr;margin-bottom:2rem;}
+  .services-grid{grid-template-columns:1fr;}
+  .forfaits-grid{grid-template-columns:1fr 1fr;}
+  .saisons-grid{grid-template-columns:1fr;}
+  .why-grid{grid-template-columns:1fr;}
+  .why-visual{margin-bottom:2rem;}
+  .contact-wrapper{grid-template-columns:1fr;gap:2.5rem;}
   .form-row{grid-template-columns:1fr;}
-  .hero-stats{gap:1.5rem;}
-  .why-visual{display:none;}
-   .container{padding:0 1.4rem;}
-   #hero{padding:7rem 1.6rem 3rem;}
-   nav{padding:0 1.4rem;}
-.nav-cta{display:flex!important;}
+
+  /* Section padding */
+  #services{padding:4.5rem 1.4rem;}
+  #forfaits{padding:4.5rem 1.4rem;}
+  #saisons{padding:4rem 1.4rem;}
+  #why{padding:4.5rem 1.4rem;}
+  #territory{padding:4.5rem 1.4rem;}
+  #galerie{padding:4rem 1.4rem 0;}
+  #contact{padding:4.5rem 1.4rem;}
+  footer{padding:2rem 1.4rem;}
+
+  .territory-inner{padding:2.5rem 1.5rem;}
+  .section-desc{margin-bottom:2rem;}
+  .footer-inner{flex-direction:column;gap:.8rem;text-align:center;}
+  .footer-links{flex-wrap:wrap;justify-content:center;gap:1.2rem;}
+}
+
+/* ══════════════════════════════════
+   RESPONSIVE — PHONE ≤600px
+══════════════════════════════════ */
+@media(max-width:600px){
+  .hl-nordik-wrap{font-size:clamp(2.2rem,11vw,3rem);}
+  .hl-lavage{font-size:.82rem;letter-spacing:.25em;}
+  .hero-badge{font-size:.62rem;letter-spacing:.08em;}
+
+  .forfaits-grid{grid-template-columns:1fr;}
+  .services-grid{grid-template-columns:1fr;}
+
+  .hero-actions{flex-direction:column;}
+  .btn-primary,.btn-ghost{justify-content:center;text-align:center;}
+
+  .hero-stats{gap:.8rem;}
+  .why-card-big{padding:1.8rem 1.4rem 2.5rem;}
+  .territory-inner{padding:2rem 1.2rem;}
 }
 </style>
 </head>
 <body>
 
-<!-- ═══ NAV ═══ -->
+<!-- ══ NAV ══ -->
 <nav>
   <a href="#hero" class="nav-logo">
     <div class="nav-badge">
-      <!-- 3-drop cluster: left+right white, center light blue -->
-      <svg class="nav-drops" viewBox="0 0 60 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg class="nav-drops" viewBox="0 0 60 44" fill="none">
         <defs>
           <linearGradient id="nd_w" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stop-color="rgba(255,255,255,.9)"/>
@@ -529,15 +409,10 @@ footer{
           </linearGradient>
           <filter id="nd_gl"><feGaussianBlur stdDeviation="1" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
         </defs>
-        <!-- Drop L (white) -->
         <path d="M15,2 C15,2 4,13 4,22 A11,11 0 0,0 26,22 C26,13 15,2 15,2Z" fill="url(#nd_w)" opacity=".7"/>
-        <!-- Drop R (white) -->
         <path d="M45,2 C45,2 34,13 34,22 A11,11 0 0,0 56,22 C56,13 45,2 45,2Z" fill="url(#nd_w)" opacity=".7"/>
-        <!-- Drop C (light blue — front) -->
         <path d="M30,1 C30,1 17,13 17,24 A13,13 0 0,0 43,24 C43,13 30,1 30,1Z" fill="url(#nd_b)" filter="url(#nd_gl)"/>
-        <!-- specular center -->
         <ellipse cx="23" cy="12" rx="2.5" ry="4.5" fill="rgba(255,255,255,.52)" transform="rotate(-20 23 12)"/>
-        <!-- wave center -->
         <path d="M21,31 Q25.5,27 30,31 Q34.5,35 39,31" stroke="white" stroke-width="1.5" stroke-linecap="round" fill="none" opacity=".72"/>
       </svg>
       <div class="nav-wm">
@@ -553,13 +428,13 @@ footer{
     <li><a href="#territory">Territoire</a></li>
     <li><a href="#contact" class="nav-cta">Soumission gratuite</a></li>
   </ul>
-   <a href="#contact" class="nav-cta" style="display:none">Soumission</a>
+  <!-- Visible only on mobile -->
+  <a href="#contact" class="nav-cta nav-mobile-cta">Soumission</a>
 </nav>
 
-<!-- ═══ HERO ═══ -->
+<!-- ══ HERO ══ -->
 <section id="hero">
   <canvas id="paint"></canvas>
-  <!-- Static circles -->
   <div class="bg-c bc1"></div>
   <div class="bg-c bc2"></div>
   <div class="bg-c bc3"></div>
@@ -569,12 +444,9 @@ footer{
     <div class="hero-badge">Rive-Sud · St-Jean-sur-Richelieu</div>
     <div class="hl-lavage" style="animation:fu .6s ease both">Lavage</div>
 
-    <!-- NORDIK avec O = goutte d'eau -->
     <div class="hl-nordik-wrap">
-      <!-- "N" -->
       <span class="hl-n-letter">N</span>
-      <!-- O remplacé par une goutte SVG -->
-      <svg class="hl-o-drop" viewBox="0 0 56 86" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg class="hl-o-drop" viewBox="0 0 56 86" fill="none">
         <defs>
           <linearGradient id="o_g" x1="28" y1="0" x2="28" y2="86" gradientUnits="userSpaceOnUse">
             <stop offset="0%"   stop-color="#ffffff"/>
@@ -589,23 +461,17 @@ footer{
           </linearGradient>
           <filter id="o_glow"><feGaussianBlur stdDeviation="2.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
         </defs>
-        <!-- Drop: tip at top (28,2), arc r=28 center at (28,58), bottom at (28,86) -->
         <path d="M28,2 C28,2 0,28 0,58 A28,28 0 0,0 56,58 C56,28 28,2 28,2Z" fill="url(#o_g)" filter="url(#o_glow)"/>
-        <!-- Shine -->
         <path d="M28,2 C28,2 0,28 0,58 A28,28 0 0,0 56,58 C56,28 28,2 28,2Z" fill="url(#o_s)" opacity=".38"/>
-        <!-- Specular -->
         <ellipse cx="14" cy="26" rx="5" ry="9" fill="rgba(255,255,255,.48)" transform="rotate(-22 14 26)"/>
-        <!-- Inner wave — brand signature -->
         <path d="M12,70 Q20,63 28,70 Q36,77 44,70" stroke="white" stroke-width="2.5" stroke-linecap="round" fill="none" opacity=".72"/>
-        <!-- Border -->
         <path d="M28,2 C28,2 0,28 0,58 A28,28 0 0,0 56,58 C56,28 28,2 28,2Z" stroke="rgba(255,255,255,.15)" stroke-width="1" fill="none"/>
       </svg>
-      <!-- "rdik." -->
       <span class="hl-n-letter">rdik</span>
     </div>
 
     <p class="hero-sub">
-      <strong>Vos matériaux retrouvent leur éclat.</strong> L'entretien régulier prolonge leur durée de vie, protège votre investissement et préserve l'apparence d'origine des résultats remarquables, parfois dès le premier passage.
+      <strong>Vos matériaux retrouvent leur éclat.</strong> L'entretien régulier prolonge leur durée de vie, protège votre investissement et préserve l'apparence d'origine — des résultats remarquables, parfois dès le premier passage.
     </p>
     <div class="hero-actions">
       <a href="#contact" class="btn-primary">
@@ -622,7 +488,7 @@ footer{
   </div>
 </section>
 
-<!-- ═══ SERVICES ═══ -->
+<!-- ══ SERVICES ══ -->
 <section id="services">
   <div class="container">
     <div class="services-intro reveal">
@@ -632,10 +498,7 @@ footer{
       </div>
       <p class="section-desc">Que vous soyez propriétaire ou gestionnaire, chaque intervention est menée avec la même précision. Nettoyer, c'est entretenir, et entretenir, c'est prolonger.</p>
     </div>
-
     <div class="services-grid">
-
-      <!-- Card 1: Résidentiel -->
       <div class="service-card sc-res reveal">
         <div class="sc-accent">Résidentiel</div>
         <svg class="sc-icon" viewBox="0 0 46 46" fill="none">
@@ -653,8 +516,6 @@ footer{
           <li>Clôtures, cabanons et abris</li>
         </ul>
       </div>
-
-      <!-- Card 2: Commercial -->
       <div class="service-card sc-com reveal" style="transition-delay:.11s">
         <div class="sc-accent">Commercial</div>
         <svg class="sc-icon" viewBox="0 0 46 46" fill="none">
@@ -674,18 +535,15 @@ footer{
           <li>Copropriétés et complexes condominiums</li>
         </ul>
       </div>
-
-      <!-- Card 3: Traitement préventif -->
       <div class="service-card sc-for reveal" style="transition-delay:.22s">
-        <div class="sc-accent">Traitement & protection</div>
+        <div class="sc-accent">Traitement &amp; protection</div>
         <svg class="sc-icon" viewBox="0 0 46 46" fill="none">
           <defs><linearGradient id="si3" x1="0" y1="0" x2="46" y2="46" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#4d72cc"/><stop offset="100%" stop-color="#a8c4ff"/></linearGradient></defs>
           <path d="M23,3 C23,3 7,15 7,27 C7,36.5 14.3,43 23,43 C31.7,43 39,36.5 39,27 C39,15 23,3 23,3Z" stroke="url(#si3)" stroke-width="1.8"/>
           <path d="M23,12 C23,12 13,20 13,27 C13,32.5 17.5,37 23,37" stroke="url(#si3)" stroke-width="1.4" stroke-linecap="round" opacity=".5"/>
-          <path d="M23,20 C23,20 17,25 17,29 C17,32 19.7,35 23,35" stroke="url(#si3)" stroke-width="1.1" stroke-linecap="round" opacity=".35"/>
         </svg>
         <h3 class="service-title">Traitement préventif</h3>
-        <p class="service-desc">Au-delà du nettoyage, nous appliquons des traitements qui prolongent la durée de vie de vos surfaces et réduisent la fréquence et le coût des interventions futures.</p>
+        <p class="service-desc">Au-delà du nettoyage, nous appliquons des traitements qui prolongent la durée de vie de vos surfaces et réduisent la fréquence des interventions futures.</p>
         <ul class="service-list">
           <li>Application de scellant (patio, béton, pavé)</li>
           <li>Traitement hydrofuge pour brique et pierre</li>
@@ -694,12 +552,11 @@ footer{
           <li>Inspection et recommandations d'entretien</li>
         </ul>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ═══ FORFAITS ═══ -->
+<!-- ══ FORFAITS ══ -->
 <section id="forfaits">
   <div class="container">
     <div class="reveal">
@@ -708,54 +565,38 @@ footer{
       <p class="section-desc">Services à la carte ou engagements saisonniers : choisissez la formule qui correspond à vos besoins et votre budget.</p>
     </div>
     <div class="forfaits-grid">
-
       <div class="forfait-card fc-1 reveal" style="--accent-color:#1e69ff">
-        <div class="forfait-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5a9eff" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
-        </div>
+        <div class="forfait-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5a9eff" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
         <h3 class="forfait-title">À la carte</h3>
         <p class="forfait-desc">Choisissez exactement les services dont vous avez besoin, quand vous en avez besoin. Aucun engagement, facturation au service rendu.</p>
         <span class="forfait-tag">Ponctuel · Flexible</span>
       </div>
-
       <div class="forfait-card fc-2 reveal" style="--accent-color:#00a8dd;transition-delay:.1s">
-        <div class="forfait-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00a8dd" stroke-width="2" stroke-linecap="round"><path d="M12 2a10 10 0 1010 10"/><path d="M12 6v6l4 2"/><path d="M18 2v4h4"/></svg>
-        </div>
+        <div class="forfait-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00a8dd" stroke-width="2" stroke-linecap="round"><path d="M12 2a10 10 0 1010 10"/><path d="M12 6v6l4 2"/><path d="M18 2v4h4"/></svg></div>
         <h3 class="forfait-title">Forfait saisonnier</h3>
         <p class="forfait-desc">Une intervention au printemps, une à l'automne. Idéal pour maintenir l'apparence de votre propriété tout au long de l'année sans y penser.</p>
         <span class="forfait-tag">Printemps · Automne</span>
       </div>
-
       <div class="forfait-card fc-3 reveal" style="--accent-color:#4d72cc;transition-delay:.2s">
-        <div class="forfait-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7898ee" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
-        </div>
+        <div class="forfait-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7898ee" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
         <h3 class="forfait-title">Forfait annuel</h3>
         <p class="forfait-desc">Planification complète sur 12 mois, incluant nettoyages réguliers et traitements préventifs. Priorité d'agenda et tarifs préférentiels garantis.</p>
         <span class="forfait-tag">Contrat annuel · Prioritaire</span>
       </div>
-
       <div class="forfait-card fc-4 reveal" style="--accent-color:#00c8ff;transition-delay:.3s">
-        <div class="forfait-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5ad4ff" stroke-width="2" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M3 9l9 7 9-7"/><line x1="12" y1="16" x2="12" y2="22"/></svg>
-        </div>
+        <div class="forfait-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5ad4ff" stroke-width="2" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M3 9l9 7 9-7"/><line x1="12" y1="16" x2="12" y2="22"/></svg></div>
         <h3 class="forfait-title">Multi-propriétés</h3>
         <p class="forfait-desc">Gestionnaires d'immeubles, syndicats de copropriété, portefeuilles commerciaux : solutions sur mesure pour la gestion de plusieurs bâtiments.</p>
         <span class="forfait-tag">Gestionnaires · Syndicats</span>
       </div>
-
     </div>
   </div>
 </section>
 
-
-<!-- ═══ QUÉBEC · 4 SAISONS ═══ -->
-<section id="saisons" style="padding:5rem 2.8rem;background:#060c22;">
+<!-- ══ QUÉBEC 4 SAISONS ══ -->
+<section id="saisons">
   <div class="container">
-    <div class="saisons-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:stretch;">
-
-      <!-- Quebec 4 saisons block -->
+    <div class="saisons-grid">
       <div style="background:rgba(6,18,55,.65);border:1px solid rgba(255,255,255,.09);border-radius:18px;padding:2.4rem;backdrop-filter:blur(18px);" class="reveal">
         <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:1.2rem;">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00c8ff" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
@@ -764,10 +605,7 @@ footer{
         <h3 style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:1.55rem;margin-bottom:.8rem;line-height:1.15;">Quatre saisons,<br>quatre raisons d'entretenir.</h3>
         <p style="font-size:.88rem;color:rgba(168,216,255,.55);font-weight:300;line-height:1.82;">Au Québec, le climat fait le travail à votre place... en sens inverse. Le sel de déglaçage hivernal s'infiltre dans le béton et attaque les matériaux de fondation. Le gel-dégel craquelle les surfaces poreuses. Les algues et moisissures prolifèrent au printemps. L'été amplifie les dépôts de minéraux. Un entretien adapté à chaque saison ne coûte pas plus cher : il prévient des réparations qui, elles, coûtent vraiment cher.</p>
       </div>
-
-      <!-- Le truc du proprio -->
-      <div style="background:linear-gradient(135deg,rgba(16,72,200,.22),rgba(0,200,255,.1));border:1px solid rgba(0,200,255,.22);border-radius:18px;padding:2.4rem;position:relative;overflow:hidden;" class="reveal" style="transition-delay:.12s">
-        <!-- decorative drop bg -->
+      <div style="background:linear-gradient(135deg,rgba(16,72,200,.22),rgba(0,200,255,.1));border:1px solid rgba(0,200,255,.22);border-radius:18px;padding:2.4rem;position:relative;overflow:hidden;" class="reveal">
         <svg style="position:absolute;right:-30px;bottom:-40px;width:160px;opacity:.08" viewBox="0 0 56 86" fill="none"><path d="M28,2 C28,2 0,28 0,58 A28,28 0 0,0 56,58 C56,28 28,2 28,2Z" fill="#00c8ff"/></svg>
         <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:1.2rem;">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00c8ff" stroke-width="1.8" stroke-linecap="round"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
@@ -776,22 +614,18 @@ footer{
         <h3 style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:1.3rem;margin-bottom:.7rem;">Lavez avant l'hiver, pas après.</h3>
         <p style="font-size:.88rem;color:rgba(168,216,255,.62);font-weight:300;line-height:1.82;">La plupart des propriétaires pensent à nettoyer au printemps, une fois que les dommages sont déjà visibles. Pourtant, un nettoyage d'automne est encore plus efficace : il retire les dépôts qui, combinés au sel et au gel, dégradent vos surfaces pendant tout l'hiver. Un seul passage en novembre peut faire la différence d'une décennie sur la durée de vie de votre revêtement.</p>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ═══ APPROCHE ═══ -->
+<!-- ══ APPROCHE ══ -->
 <section id="why">
   <div class="container">
     <div class="why-grid">
-
-      <!-- Visual card — single big card only -->
       <div class="why-visual reveal">
-        <div class="why-card-big" style="height:auto;min-height:220px;position:relative;">
+        <div class="why-card-big">
           <h4>Nettoyer, c'est préserver.</h4>
           <p>La saleté, les algues et les dépôts minéraux dégradent les matériaux en profondeur au fil du temps. Un nettoyage régulier ralentit ce processus, et les résultats sont souvent spectaculaires dès la première intervention.</p>
-          <!-- decorative ring -->
           <svg style="position:absolute;bottom:-24px;right:-24px;width:145px;opacity:.18" viewBox="0 0 145 145" fill="none">
             <defs><linearGradient id="rg1" x1="0" y1="0" x2="145" y2="145" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#1048c8"/><stop offset="100%" stop-color="#00c8ff"/></linearGradient></defs>
             <circle cx="72" cy="72" r="54" stroke="url(#rg1)" stroke-width="1.1"><animateTransform attributeName="transform" type="rotate" from="0 72 72" to="360 72 72" dur="16s" repeatCount="indefinite"/></circle>
@@ -800,48 +634,22 @@ footer{
           </svg>
         </div>
       </div>
-
-      <!-- Pillars -->
       <div>
         <span class="section-label">Notre approche</span>
         <h2 class="section-title reveal">La précision<br>avant tout.</h2>
         <p class="section-desc reveal">Chaque pression, chaque produit, chaque angle : tout est calibré pour obtenir le meilleur résultat sans jamais compromettre l'intégrité de vos matériaux.</p>
         <div class="pillars reveal">
-          <div class="pillar">
-            <div class="pillar-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9fd4f8" stroke-width="2" stroke-linecap="round"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/></svg></div>
-            <div>
-              <div class="pillar-title">Respect du matériau</div>
-              <div class="pillar-desc">Pression ajustée selon chaque surface : vinyle, bois, brique, béton. On ne nettoie pas tout de la même façon.</div>
-            </div>
-          </div>
-          <div class="pillar">
-            <div class="pillar-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9fd4f8" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div>
-            <div>
-              <div class="pillar-title">Résultats visibles</div>
-              <div class="pillar-desc">On fait le travail jusqu'à ce que ce soit fait. Pas de zones oubliées, pas de bandes. Un résultat uniforme et durable.</div>
-            </div>
-          </div>
-          <div class="pillar">
-            <div class="pillar-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9fd4f8" stroke-width="2" stroke-linecap="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg></div>
-            <div>
-              <div class="pillar-title">Service professionnel</div>
-              <div class="pillar-desc">Ponctuel, propre, efficace. Vous n'avez pas à surveiller le travail. C'est notre responsabilité de bien le faire.</div>
-            </div>
-          </div>
-          <div class="pillar">
-            <div class="pillar-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9fd4f8" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-            <div>
-              <div class="pillar-title">Protection de votre investissement</div>
-              <div class="pillar-desc">Un entretien régulier coûte moins cher qu'un remplacement prématuré. On vous aide à garder vos matériaux plus longtemps.</div>
-            </div>
-          </div>
+          <div class="pillar"><div class="pillar-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9fd4f8" stroke-width="2" stroke-linecap="round"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/></svg></div><div><div class="pillar-title">Respect du matériau</div><div class="pillar-desc">Pression ajustée selon chaque surface : vinyle, bois, brique, béton. On ne nettoie pas tout de la même façon.</div></div></div>
+          <div class="pillar"><div class="pillar-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9fd4f8" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div><div><div class="pillar-title">Résultats visibles</div><div class="pillar-desc">On fait le travail jusqu'à ce que ce soit fait. Pas de zones oubliées, pas de bandes. Un résultat uniforme et durable.</div></div></div>
+          <div class="pillar"><div class="pillar-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9fd4f8" stroke-width="2" stroke-linecap="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg></div><div><div class="pillar-title">Service professionnel</div><div class="pillar-desc">Ponctuel, propre, efficace. Vous n'avez pas à surveiller le travail. C'est notre responsabilité de bien le faire.</div></div></div>
+          <div class="pillar"><div class="pillar-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9fd4f8" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><div class="pillar-title">Protection de votre investissement</div><div class="pillar-desc">Un entretien régulier coûte moins cher qu'un remplacement prématuré. On vous aide à garder vos matériaux plus longtemps.</div></div></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ TERRITORY ═══ -->
+<!-- ══ TERRITOIRE ══ -->
 <section id="territory">
   <div class="container">
     <div class="territory-inner reveal">
@@ -855,59 +663,44 @@ footer{
   </div>
 </section>
 
-
-<!-- ═══ GALERIE (carrousel) ═══ -->
-<section id="galerie" style="padding:6rem 2.8rem 0;background:#060e22;">
+<!-- ══ GALERIE ══ -->
+<section id="galerie">
   <div class="container">
-    <span style="display:inline-block;font-family:'Jost',sans-serif;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--aqua);font-weight:400;margin-bottom:.6rem;">Avant / Après</span>
-    <h2 style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:clamp(1.8rem,3.5vw,2.75rem);line-height:1.1;margin-bottom:.9rem;">Voyez la différence<br>par vous-même.</h2>
-    <p style="color:rgba(168,216,255,.5);max-width:500px;font-weight:300;line-height:1.88;margin-bottom:2.5rem;font-size:.97rem;">Les images parleront mieux que les mots. Voici ce que peut accomplir un bon nettoyage professionnel.</p>
-
-    <!-- Carousel track -->
-    <div style="display:flex;gap:1.4rem;overflow-x:auto;padding-bottom:1.5rem;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:rgba(77,139,255,.3) transparent;" class="reveal">
-      <!-- Photo placeholder cards -->
-      <!-- 1 -->
-      <div style="flex:0 0 min(340px,80vw);height:260px;background:rgba(6,18,55,.6);border:1px solid rgba(255,255,255,.09);border-radius:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;scroll-snap-align:start;position:relative;overflow:hidden;">
-        <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(16,72,200,.08),rgba(0,200,255,.05));border-radius:18px;"></div>
-        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="rgba(159,212,248,.3)" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-        <span style="font-family:'Jost',sans-serif;font-size:.82rem;color:rgba(168,216,255,.35);font-weight:300;letter-spacing:.08em;">Photo à venir</span>
+    <span class="section-label">Avant / Après</span>
+    <h2 class="section-title" style="margin-bottom:.9rem">Voyez la différence<br>par vous-même.</h2>
+    <p style="color:rgba(168,216,255,.5);max-width:500px;font-weight:300;line-height:1.88;margin-bottom:2rem;font-size:.95rem;">Les images parleront mieux que les mots. Voici ce que peut accomplir un bon nettoyage professionnel.</p>
+    <div class="carousel-track reveal">
+      <!-- 5 placeholder cards -->
+      <div class="carousel-card" style="background:linear-gradient(135deg,rgba(13,29,66,.8),rgba(18,82,216,.15));">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="rgba(159,212,248,.28)" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        <span style="font-family:'Jost',sans-serif;font-size:.8rem;color:rgba(168,216,255,.32);font-weight:300;letter-spacing:.08em;">Photo à venir</span>
       </div>
-      <!-- 2 -->
-      <div style="flex:0 0 min(340px,80vw);height:260px;background:rgba(6,18,55,.6);border:1px solid rgba(255,255,255,.09);border-radius:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;scroll-snap-align:start;position:relative;overflow:hidden;">
-        <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,168,221,.06),rgba(0,200,255,.04));border-radius:18px;"></div>
-        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="rgba(159,212,248,.3)" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-        <span style="font-family:'Jost',sans-serif;font-size:.82rem;color:rgba(168,216,255,.35);font-weight:300;letter-spacing:.08em;">Photo à venir</span>
+      <div class="carousel-card" style="background:linear-gradient(135deg,rgba(8,24,40,.8),rgba(0,168,221,.12));">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="rgba(159,212,248,.28)" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        <span style="font-family:'Jost',sans-serif;font-size:.8rem;color:rgba(168,216,255,.32);font-weight:300;letter-spacing:.08em;">Photo à venir</span>
       </div>
-      <!-- 3 -->
-      <div style="flex:0 0 min(340px,80vw);height:260px;background:rgba(6,18,55,.6);border:1px solid rgba(255,255,255,.09);border-radius:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;scroll-snap-align:start;position:relative;overflow:hidden;">
-        <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(77,114,204,.07),rgba(77,139,255,.04));border-radius:18px;"></div>
-        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="rgba(159,212,248,.3)" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-        <span style="font-family:'Jost',sans-serif;font-size:.82rem;color:rgba(168,216,255,.35);font-weight:300;letter-spacing:.08em;">Photo à venir</span>
+      <div class="carousel-card" style="background:linear-gradient(135deg,rgba(11,16,48,.8),rgba(77,114,204,.12));">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="rgba(159,212,248,.28)" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        <span style="font-family:'Jost',sans-serif;font-size:.8rem;color:rgba(168,216,255,.32);font-weight:300;letter-spacing:.08em;">Photo à venir</span>
       </div>
-      <!-- 4 -->
-      <div style="flex:0 0 min(340px,80vw);height:260px;background:rgba(6,18,55,.6);border:1px solid rgba(255,255,255,.09);border-radius:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;scroll-snap-align:start;position:relative;overflow:hidden;">
-        <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(7,21,32,.5),rgba(10,64,96,.08));border-radius:18px;"></div>
-        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="rgba(159,212,248,.3)" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-        <span style="font-family:'Jost',sans-serif;font-size:.82rem;color:rgba(168,216,255,.35);font-weight:300;letter-spacing:.08em;">Photo à venir</span>
+      <div class="carousel-card" style="background:linear-gradient(135deg,rgba(7,21,32,.8),rgba(10,64,96,.15));">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="rgba(159,212,248,.28)" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        <span style="font-family:'Jost',sans-serif;font-size:.8rem;color:rgba(168,216,255,.32);font-weight:300;letter-spacing:.08em;">Photo à venir</span>
       </div>
-      <!-- 5 -->
-      <div style="flex:0 0 min(340px,80vw);height:260px;background:rgba(6,18,55,.6);border:1px solid rgba(255,255,255,.09);border-radius:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;scroll-snap-align:start;position:relative;overflow:hidden;">
-        <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(16,72,200,.06),rgba(0,200,255,.03));border-radius:18px;"></div>
-        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="rgba(159,212,248,.3)" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-        <span style="font-family:'Jost',sans-serif;font-size:.82rem;color:rgba(168,216,255,.35);font-weight:300;letter-spacing:.08em;">Photo à venir</span>
+      <div class="carousel-card" style="background:linear-gradient(135deg,rgba(13,29,66,.8),rgba(0,200,255,.08));">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="rgba(159,212,248,.28)" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        <span style="font-family:'Jost',sans-serif;font-size:.8rem;color:rgba(168,216,255,.32);font-weight:300;letter-spacing:.08em;">Photo à venir</span>
       </div>
     </div>
-    <!-- Scroll hint -->
-    <p style="font-size:.75rem;color:rgba(168,216,255,.28);font-weight:300;margin-top:.5rem;letter-spacing:.06em;">← Défiler pour voir plus →</p>
+    <p style="font-size:.73rem;color:rgba(168,216,255,.25);font-weight:300;margin-top:.5rem;letter-spacing:.06em;">← Défiler pour voir plus →</p>
   </div>
 </section>
 
-<!-- ═══ CONTACT ═══ -->
+<!-- ══ CONTACT ══ -->
 <section id="contact">
   <div class="container">
     <span class="section-label">Nous joindre</span>
-    <h2 class="section-title reveal">La qualité se voit.
-<br>Parlez-nous de votre besoin.</h2>
+    <h2 class="section-title reveal">La qualité se voit.<br>Parlez-nous de votre besoin.</h2>
     <p class="section-desc reveal">Soumission gratuite et sans engagement. On vous répond dans les 24 heures.</p>
     <div class="contact-wrapper">
       <div class="contact-info reveal">
@@ -955,13 +748,14 @@ footer{
       <a href="#forfaits">Forfaits</a>
       <a href="#why">Approche</a>
       <a href="#territory">Territoire</a>
+      <a href="#galerie">Galerie</a>
       <a href="#contact">Contact</a>
     </div>
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-/* ════ PAINT SPLASH BACKGROUND ════ */
+<script>
+/* PAINT — desktop only (canvas hidden on mobile via CSS) */
 const cv = document.getElementById('paint');
 const cx = cv.getContext('2d');
 const heroEl = document.getElementById('hero');
@@ -992,19 +786,15 @@ function draw(){
     cx.closePath();cx.fillStyle=color;cx.fill();cx.restore();
   }
 
-  /* Blue paint blobs */
-  blob(w*.10,h*.65, 280,200, -.4, '#1558e8', .52, 68);
-  blob(w*.30,h*.35, 190,145,  .22,'#0e48d8', .42, 58);
-  blob(w*.72,h*.22, 230,165,  .52,'#1a6aff', .36, 72);
-  blob(w*.88,h*.72, 175,135, -.18,'#0a3aaa', .4,  62);
-  blob(w*.50,h*.55, 140,105,  .72,'#2580ff', .30, 52);
+  blob(w*.10,h*.65,280,200,-.4,'#1558e8',.52,68);
+  blob(w*.30,h*.35,190,145,.22,'#0e48d8',.42,58);
+  blob(w*.72,h*.22,230,165,.52,'#1a6aff',.36,72);
+  blob(w*.88,h*.72,175,135,-.18,'#0a3aaa',.4,62);
+  blob(w*.50,h*.55,140,105,.72,'#2580ff',.30,52);
+  blob(w*.05,h*.18,210,165,.3,'#020a1c',.88,42);
+  blob(w*.95,h*.08,190,148,-.5,'#030c22',.82,46);
+  blob(w*.58,h*.88,230,185,.1,'#020e28',.78,52);
 
-  /* Deep shadow blobs */
-  blob(w*.05,h*.18, 210,165,  .3, '#020a1c', .88, 42);
-  blob(w*.95,h*.08, 190,148, -.5, '#030c22', .82, 46);
-  blob(w*.58,h*.88, 230,185,  .1, '#020e28', .78, 52);
-
-  /* White paint streaks */
   function streak(x1,y1,x2,y2,cpx1,cpy1,cpx2,cpy2,lw,alpha,blur){
     cx.save();cx.globalAlpha=alpha;cx.filter=`blur(${blur}px)`;
     cx.beginPath();cx.moveTo(x1,y1);
@@ -1012,27 +802,23 @@ function draw(){
     cx.strokeStyle='#ffffff';cx.lineWidth=lw;cx.lineCap='round';
     cx.stroke();cx.restore();
   }
-  streak(w*.06,h*.12, w*.62,h*.40, w*.22,h*.04, w*.46,h*.52, 20,.07,24);
-  streak(w*.32,h*.06, w*.90,h*.32, w*.54,h*.02, w*.76,h*.42, 14,.055,20);
-  streak(w*.02,h*.80, w*.40,h*.52, w*.14,h*.94, w*.28,h*.46, 11,.045,22);
+  streak(w*.06,h*.12,w*.62,h*.40,w*.22,h*.04,w*.46,h*.52,20,.07,24);
+  streak(w*.32,h*.06,w*.90,h*.32,w*.54,h*.02,w*.76,h*.42,14,.055,20);
+  streak(w*.02,h*.80,w*.40,h*.52,w*.14,h*.94,w*.28,h*.46,11,.045,22);
 
-  /* White dots */
   [[w*.18,h*.26,30,.052],[w*.76,h*.16,20,.042],[w*.53,h*.73,24,.038],[w*.86,h*.52,17,.036]].forEach(([x,y,r,a])=>{
     cx.save();cx.globalAlpha=a;cx.filter='blur(9px)';
     cx.beginPath();cx.arc(x,y,r,0,Math.PI*2);cx.fillStyle='#fff';cx.fill();cx.restore();
   });
 
-  /* Aqua accents */
-  blob(w*.36,h*.12, 125,85, .8,'#00c8ff',.07,52);
-  blob(w*.74,h*.82, 105,72,-.3,'#00a8ee',.06,46);
+  blob(w*.36,h*.12,125,85,.8,'#00c8ff',.07,52);
+  blob(w*.74,h*.82,105,72,-.3,'#00a8ee',.06,46);
 }
 
 window.addEventListener('resize', rsz);
 rsz();
 
-/* ════ SCROLL REVEAL ════ */
-
-/* ════ SCROLL REVEAL ════ */
+/* SCROLL REVEAL */
 const obs = new IntersectionObserver(e=>{
   e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target);}});
 },{threshold:.1});
