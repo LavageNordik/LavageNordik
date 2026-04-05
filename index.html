@@ -34,31 +34,28 @@ nav{
   position:fixed;top:0;left:0;right:0;z-index:200;
   height:82px;padding:0 3rem;
   display:flex;align-items:center;justify-content:space-between;
-  background:var(--navbg);
-  box-shadow:0 1px 0 rgba(26,43,74,.1),0 3px 20px rgba(0,0,0,.07);
+  background:#040e28;
+  box-shadow:0 1px 0 rgba(255,255,255,.06),0 3px 24px rgba(0,0,0,.45);
 }
 .nav-logo{text-decoration:none;display:flex;align-items:center;}
-.nav-badge{
-  display:flex;align-items:center;gap:1.1rem;
-  background:#030f2e;border-radius:10px;
-  padding:.75rem 1.5rem .75rem 1.15rem;
-  box-shadow:0 3px 16px rgba(0,0,0,.3);
+.nav-logo-img{
+  height:64px;
+  width:auto;
+  display:block;
+  border-radius:10px;
+  overflow:hidden;
 }
-.nav-drops{width:56px;height:46px;}
-.nav-wm{display:flex;flex-direction:column;gap:2px;line-height:1;}
-.nav-lavage{
-  font-family:'Jost',sans-serif;font-weight:200;
-  font-size:.65rem;letter-spacing:.5em;text-transform:uppercase;
-  color:rgba(159,212,248,.7);
-}
-.nav-nordik-sm{
-  font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.38rem;
-  background:linear-gradient(140deg,#fff 0%,#c2e2ff 32%,#5a96ff 65%,#1048c8 100%);
-  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+
+.hero-logo-img{
+  width:min(720px,100%);
+  height:auto;
+  display:block;
+  margin-bottom:1.8rem;
+  animation:fu .6s .07s ease both;
 }
 .nav-links{display:flex;align-items:center;gap:2.4rem;list-style:none;}
 .nav-links a{
-  color:var(--navtext);text-decoration:none;
+  color:rgba(168,216,255,.75);text-decoration:none;
   font-size:.88rem;font-weight:400;letter-spacing:.02em;
   position:relative;padding-bottom:4px;transition:color .22s;
 }
@@ -69,7 +66,7 @@ nav{
   border-radius:2px;
   transition:width .25s cubic-bezier(.4,0,.2,1);
 }
-.nav-links a:hover{color:var(--blue1);}
+.nav-links a:hover{color:#fff;}
 .nav-links a:hover::after{width:100%;}
 .nav-links .nav-cta::after{display:none;}
 .nav-cta{
@@ -319,10 +316,8 @@ footer{border-top:1px solid rgba(255,255,255,.07);padding:2.6rem 2.8rem;backgrou
   /* Nav */
   nav{padding:0 1.2rem;height:70px;}
   .nav-links{display:none;}
-  .nav-mobile-cta{display:inline-flex!important;}
-  .nav-badge{padding:.6rem 1rem .6rem .85rem;gap:.8rem;}
-  .nav-drops{width:44px;height:36px;}
-  .nav-nordik-sm{font-size:1.15rem;}
+  .nav-mobile-cta{display:none!important;}
+  .nav-logo-crop{width:160px;height:50px;}
 
   /* Hero — replace heavy canvas with CSS gradient on mobile */
   #paint{display:none;}
@@ -339,6 +334,7 @@ footer{border-top:1px solid rgba(255,255,255,.07);padding:2.6rem 2.8rem;backgrou
   .hero-content{max-width:100%;}
   .hero-badge{font-size:.66rem;letter-spacing:.1em;padding:.32rem .9rem;}
   .hero-sub{max-width:100%;font-size:.95rem;}
+  
   .hero-stats{gap:1.2rem;flex-wrap:wrap;margin-top:2rem;padding-top:2rem;}
   .stat-num{font-size:1.6rem;}
   .stat-label{font-size:.65rem;}
@@ -395,31 +391,9 @@ footer{border-top:1px solid rgba(255,255,255,.07);padding:2.6rem 2.8rem;backgrou
 <!-- ══ NAV ══ -->
 <nav>
   <a href="#hero" class="nav-logo">
-    <div class="nav-badge">
-      <svg class="nav-drops" viewBox="0 0 60 44" fill="none">
-        <defs>
-          <linearGradient id="nd_w" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="rgba(255,255,255,.9)"/>
-            <stop offset="100%" stop-color="rgba(255,255,255,.55)"/>
-          </linearGradient>
-          <linearGradient id="nd_b" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#c8e8ff"/>
-            <stop offset="45%" stop-color="#5aadee"/>
-            <stop offset="100%" stop-color="#1252d8"/>
-          </linearGradient>
-          <filter id="nd_gl"><feGaussianBlur stdDeviation="1" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-        </defs>
-        <path d="M15,2 C15,2 4,13 4,22 A11,11 0 0,0 26,22 C26,13 15,2 15,2Z" fill="url(#nd_w)" opacity=".7"/>
-        <path d="M45,2 C45,2 34,13 34,22 A11,11 0 0,0 56,22 C56,13 45,2 45,2Z" fill="url(#nd_w)" opacity=".7"/>
-        <path d="M30,1 C30,1 17,13 17,24 A13,13 0 0,0 43,24 C43,13 30,1 30,1Z" fill="url(#nd_b)" filter="url(#nd_gl)"/>
-        <ellipse cx="23" cy="12" rx="2.5" ry="4.5" fill="rgba(255,255,255,.52)" transform="rotate(-20 23 12)"/>
-        <path d="M21,31 Q25.5,27 30,31 Q34.5,35 39,31" stroke="white" stroke-width="1.5" stroke-linecap="round" fill="none" opacity=".72"/>
-      </svg>
-      <div class="nav-wm">
-        <span class="nav-lavage">Lavage</span>
-        <span class="nav-nordik-sm">Nordik</span>
-      </div>
-    </div>
+    <img src="https://lavagenordik.com/LOGO%20-%20LNER%20BLANC%20FOND%20H.png"
+         alt="Lavage Nordik Eau-Richelieu"
+         class="nav-logo-img">
   </a>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
@@ -442,33 +416,11 @@ footer{border-top:1px solid rgba(255,255,255,.07);padding:2.6rem 2.8rem;backgrou
 
   <div class="hero-content">
     <div class="hero-badge">Rive-Sud · St-Jean-sur-Richelieu</div>
-    <div class="hl-lavage" style="animation:fu .6s ease both">Lavage</div>
 
-    <div class="hl-nordik-wrap">
-      <span class="hl-n-letter">N</span>
-      <svg class="hl-o-drop" viewBox="0 0 56 86" fill="none">
-        <defs>
-          <linearGradient id="o_g" x1="28" y1="0" x2="28" y2="86" gradientUnits="userSpaceOnUse">
-            <stop offset="0%"   stop-color="#ffffff"/>
-            <stop offset="20%"  stop-color="#c2e8ff"/>
-            <stop offset="55%"  stop-color="#4d8bff"/>
-            <stop offset="88%"  stop-color="#1048c8"/>
-            <stop offset="100%" stop-color="#061a50"/>
-          </linearGradient>
-          <linearGradient id="o_s" x1="0" y1="0" x2=".65" y2="1">
-            <stop offset="0%" stop-color="rgba(255,255,255,.55)"/>
-            <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
-          </linearGradient>
-          <filter id="o_glow"><feGaussianBlur stdDeviation="2.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-        </defs>
-        <path d="M28,2 C28,2 0,28 0,58 A28,28 0 0,0 56,58 C56,28 28,2 28,2Z" fill="url(#o_g)" filter="url(#o_glow)"/>
-        <path d="M28,2 C28,2 0,28 0,58 A28,28 0 0,0 56,58 C56,28 28,2 28,2Z" fill="url(#o_s)" opacity=".38"/>
-        <ellipse cx="14" cy="26" rx="5" ry="9" fill="rgba(255,255,255,.48)" transform="rotate(-22 14 26)"/>
-        <path d="M12,70 Q20,63 28,70 Q36,77 44,70" stroke="white" stroke-width="2.5" stroke-linecap="round" fill="none" opacity=".72"/>
-        <path d="M28,2 C28,2 0,28 0,58 A28,28 0 0,0 56,58 C56,28 28,2 28,2Z" stroke="rgba(255,255,255,.15)" stroke-width="1" fill="none"/>
-      </svg>
-      <span class="hl-n-letter">rdik</span>
-    </div>
+    <img
+      src="https://lavagenordik.com/LOGO%20-%20LNER.png"
+      alt="Lavage Nordik Eau-Richelieu"
+      class="hero-logo-img">
 
     <p class="hero-sub">
       <strong>Vos matériaux retrouvent leur éclat.</strong> L'entretien régulier prolonge leur durée de vie, protège votre investissement et préserve l'apparence d'origine — des résultats remarquables, parfois dès le premier passage.
@@ -479,11 +431,6 @@ footer{border-top:1px solid rgba(255,255,255,.07);padding:2.6rem 2.8rem;backgrou
         Soumission gratuite
       </a>
       <a href="#services" class="btn-ghost">Voir nos services →</a>
-    </div>
-    <div class="hero-stats">
-      <div><div class="stat-num">Rive-Sud</div><div class="stat-label">Territoire desservi</div></div>
-      <div><div class="stat-num">3</div><div class="stat-label">Catégories de services</div></div>
-      <div><div class="stat-num">4</div><div class="stat-label">Types de forfaits</div></div>
     </div>
   </div>
 </section>
@@ -705,7 +652,7 @@ footer{border-top:1px solid rgba(255,255,255,.07);padding:2.6rem 2.8rem;backgrou
     <div class="contact-wrapper">
       <div class="contact-info reveal">
         <div class="contact-item"><div class="contact-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#9fd4f8" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.79a16 16 0 006.29 6.29l1.15-1.15a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div><div class="cd"><span class="cd-label">Téléphone</span><a href="tel:5144499537" class="cd-val">514 449-9537</a></div></div>
-        <div class="contact-item"><div class="contact-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#9fd4f8" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div class="cd"><span class="cd-label">Courriel</span><a href="#" onclick="this.href='mai'+'lto:info@lavagenordik.com'" class="cd-val">info@lavagenordik.com</a></div></div>
+        <div class="contact-item"><div class="contact-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#9fd4f8" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div class="cd"><span class="cd-label">Courriel</span><a href="#" onclick="this.href='mai'+'lto:info@lavagenordik.com'" class="cd-val"><span class="__cf_email__" data-cfemail="b9d0d7dfd6f9d5d8cfd8dedcd7d6cbddd0d297dad6d4">[email&#160;protected]</span></a></div></div>
         <div class="contact-item"><div class="contact-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#9fd4f8" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div class="cd"><span class="cd-label">Secteur</span><span class="cd-val">Rive-Sud · St-Jean-sur-Richelieu</span></div></div>
         <div class="contact-item"><div class="contact-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#9fd4f8" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div><div class="cd"><span class="cd-label">Disponibilité</span><span class="cd-val">Lun–Sam · Réponse en 24 h</span></div></div>
         <div class="contact-item"><div class="contact-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#9fd4f8" stroke-width="2" stroke-linecap="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div class="cd"><span class="cd-label">Propriétaire</span><span class="cd-val">David Provost</span></div></div>
@@ -740,7 +687,7 @@ footer{border-top:1px solid rgba(255,255,255,.07);padding:2.6rem 2.8rem;backgrou
 <footer>
   <div class="container footer-inner">
     <div>
-      <div class="footer-copy">© 2026 Lavage Nordik Eau-Richelieu · David Provost</div>
+      <div class="footer-copy">© 2025 Lavage Nordik Eau-Richelieu · David Provost</div>
       <div class="footer-copy" style="margin-top:.22rem">St-Jean-sur-Richelieu · <a href="http://lavagenordik.com" style="color:#5a9eff;text-decoration:none;font-weight:400">lavagenordik.com</a></div>
     </div>
     <div class="footer-links">
@@ -754,7 +701,7 @@ footer{border-top:1px solid rgba(255,255,255,.07);padding:2.6rem 2.8rem;backgrou
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 /* PAINT — desktop only (canvas hidden on mobile via CSS) */
 const cv = document.getElementById('paint');
 const cx = cv.getContext('2d');
