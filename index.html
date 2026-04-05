@@ -685,7 +685,7 @@ footer{border-top:1px solid rgba(255,255,255,.07);padding:2.6rem 2.8rem;backgrou
     <div class="contact-wrapper">
       <div class="contact-info reveal">
         <div class="contact-item"><div class="contact-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#9fd4f8" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.79a16 16 0 006.29 6.29l1.15-1.15a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div><div class="cd"><span class="cd-label">Téléphone</span><a href="tel:5144499537" class="cd-val">514 449-9537</a></div></div>
-        <div class="contact-item"><div class="contact-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#9fd4f8" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div class="cd"><span class="cd-label">Courriel</span><a id="email-link" href="#" class="cd-val">info@lavagenordik.com</a></div></div>
+        <div class="contact-item"><div class="contact-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#9fd4f8" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div class="cd"><span class="cd-label">Courriel</span><a id="email-link" class="cd-val" style="cursor:pointer"></a></div></div>
         <div class="contact-item"><div class="contact-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#9fd4f8" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div class="cd"><span class="cd-label">Secteur</span><span class="cd-val">Rive-Sud · St-Jean-sur-Richelieu</span></div></div>
         <div class="contact-item"><div class="contact-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#9fd4f8" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div><div class="cd"><span class="cd-label">Disponibilité</span><span class="cd-val">Lun–Sam · Réponse en 24 h</span></div></div>
         <div class="contact-item"><div class="contact-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#9fd4f8" stroke-width="2" stroke-linecap="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div class="cd"><span class="cd-label">Propriétaire</span><span class="cd-val">David Provost</span></div></div>
@@ -734,7 +734,7 @@ footer{border-top:1px solid rgba(255,255,255,.07);padding:2.6rem 2.8rem;backgrou
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 /* PAINT — desktop only (canvas hidden on mobile via CSS) */
 const cv = document.getElementById('paint');
 const cx = cv.getContext('2d');
@@ -804,20 +804,20 @@ const obs = new IntersectionObserver(e=>{
 },{threshold:.1});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
-/* Email — split to avoid scanner */
+/* Email built 100% in JS — Cloudflare never sees it in HTML */
 (function(){
-  var u='info';var d='lavagenordik';var t='com';
+  var p=['i','n','f','o'];
+  var d=['l','a','v','a','g','e','n','o','r','d','i','k'];
+  var u=p.join('')+'@'+d.join('')+'.com';
   var el=document.getElementById('email-link');
-  if(el){el.href=u+'@'+d+'.'+t;}
+  if(el){ el.textContent=u; el.href='mai'+'lto:'+u; }
 })();
 </script>
 
 <!-- ══ MOBILE FIXED BOTTOM CTA ══ -->
 <div class="mobile-bottom-cta">
   <a href="#contact">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.79a16 16 0 006.29 6.29l1.15-1.15a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-    Soumission gratuite
-  </a>
-</div>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.1
+</script>
 </body>
 </html>
