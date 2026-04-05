@@ -39,7 +39,7 @@ nav{
 }
 .nav-logo{text-decoration:none;display:flex;align-items:center;}
 .nav-logo-img{
-  height:64px;
+  height:78px;
   width:auto;
   display:block;
   border-radius:10px;
@@ -314,15 +314,13 @@ footer{border-top:1px solid rgba(255,255,255,.07);padding:2.6rem 2.8rem;backgrou
 ══════════════════════════════════ */
 @media(max-width:900px){
   /* Nav */
-  nav{padding:0 1.2rem;height:70px;}
-  .nav-links{display:none;}
-  .nav-mobile-cta{display:none!important;}
+  nav{display:none;}
   .nav-logo-crop{width:160px;height:50px;}
 
   /* Hero — replace heavy canvas with CSS gradient on mobile */
   #paint{display:none;}
   #hero{
-    padding:7.5rem 1.4rem 3.5rem;
+    padding:2.5rem 1.4rem 5rem;
     background:
       radial-gradient(ellipse 90% 50% at 15% 65%, rgba(21,88,232,.5) 0%,transparent 65%),
       radial-gradient(ellipse 65% 40% at 80% 20%, rgba(30,106,255,.25) 0%,transparent 60%),
@@ -384,6 +382,30 @@ footer{border-top:1px solid rgba(255,255,255,.07);padding:2.6rem 2.8rem;backgrou
   .why-card-big{padding:1.8rem 1.4rem 2.5rem;}
   .territory-inner{padding:2rem 1.2rem;}
 }
+
+/* ══ MOBILE FIXED BOTTOM CTA ══ */
+.mobile-bottom-cta{display:none;}
+@media(max-width:900px){
+  .mobile-bottom-cta{
+    display:flex;
+    position:fixed;bottom:0;left:0;right:0;
+    z-index:300;
+    padding:1rem 1.4rem 1.4rem;
+    background:linear-gradient(to top, rgba(2,11,30,1) 70%, rgba(2,11,30,0));
+    justify-content:center;
+  }
+  .mobile-bottom-cta a{
+    display:flex;align-items:center;justify-content:center;gap:.5rem;
+    width:100%;max-width:420px;
+    background:linear-gradient(135deg,var(--blue1),var(--blue2));
+    color:#fff;padding:1rem 2rem;border-radius:10px;
+    text-decoration:none;font-weight:600;font-size:1rem;
+    box-shadow:0 4px 28px rgba(16,72,200,.5);
+    font-family:'Jost',sans-serif;
+  }
+  /* Add padding to body bottom so last section content not hidden behind CTA */
+  body{padding-bottom:80px;}
+}
 </style>
 </head>
 <body>
@@ -391,7 +413,7 @@ footer{border-top:1px solid rgba(255,255,255,.07);padding:2.6rem 2.8rem;backgrou
 <!-- ══ NAV ══ -->
 <nav>
   <a href="#hero" class="nav-logo">
-    <img src="https://lavagenordik.com/LOGO%20-%20LNER%20BLANC%20FOND%20H.png"
+    <img src="https://lavagenordik.com/LOGO%20-%20LNER.png"
          alt="Lavage Nordik Eau-Richelieu"
          class="nav-logo-img">
   </a>
@@ -771,5 +793,13 @@ const obs = new IntersectionObserver(e=>{
 },{threshold:.1});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 </script>
+
+<!-- ══ MOBILE FIXED BOTTOM CTA ══ -->
+<div class="mobile-bottom-cta">
+  <a href="#contact">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.79a16 16 0 006.29 6.29l1.15-1.15a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+    Soumission gratuite
+  </a>
+</div>
 </body>
 </html>
